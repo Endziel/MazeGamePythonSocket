@@ -7,7 +7,12 @@ class Server:
     def __init__(self):
         self.sio = socketio.Server()
         self.app = socketio.WSGIApp(self.sio, static_files={
-            '/': 'server/public/index.html',
+            '/': 'server/public/views/index.html',
+            '/server/public': 'server/public',
+            '/server/threejs': 'server/threejs',
+            '/threejs/build': 'server/threejs/build',
+            '/css': 'server/public/css/',
+            '/server/threejs/examples/jsm/controls': 'server/threejs/examples/jsm/controls',
         })
         self.call_backs()
         print(os.getcwd())
